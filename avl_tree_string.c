@@ -34,8 +34,7 @@ int max(int a, int b)
 	NULL left and right pointers. */
 struct Node* newNode(char* key)
 {
-	struct Node* node = (struct Node*)
-						malloc(sizeof(struct Node));
+	struct Node* node = (struct Node*) malloc(sizeof(struct Node));
 	strcpy(node->key, key);
 	node->left = NULL;
 	node->right = NULL;
@@ -103,8 +102,7 @@ struct Node* insert(struct Node* node, char* key)
 		return node;
 
 	/* 2. Update height of this ancestor node */
-	node->height = 1 + max(height(node->left),
-						height(node->right));
+	node->height = 1 + max(height(node->left), height(node->right));
 
 	/* 3. Get the balance factor of this ancestor
 		node to check whether this node became
@@ -181,8 +179,7 @@ struct Node* deleteNode(struct Node* root, char* key)
 		// node with only one child or no child
 		if( (root->left == NULL) || (root->right == NULL) )
 		{
-			struct Node *temp = root->left ? root->left :
-											root->right;
+			struct Node *temp = root->left ? root->left : root->right;
 
 			// No child case
 			if (temp == NULL)
@@ -202,7 +199,7 @@ struct Node* deleteNode(struct Node* root, char* key)
 			struct Node* temp = minValueNode(root->right);
 
 			// Copy the inorder successor's data to this node
-            strcpy(root->key, temp->key);
+            		strcpy(root->key, temp->key);
 
 			// Delete the inorder successor
 			root->right = deleteNode(root->right, temp->key);
@@ -214,8 +211,7 @@ struct Node* deleteNode(struct Node* root, char* key)
 	return root;
 
 	// STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
-	root->height = 1 + max(height(root->left),
-						height(root->right));
+	root->height = 1 + max(height(root->left), height(root->right));
 
 	// STEP 3: GET THE BALANCE FACTOR OF THIS NODE (to
 	// check whether this node became unbalanced)
@@ -265,7 +261,7 @@ void inOrder(struct Node *root)
 {
 	if(root != NULL)
 	{
-        inOrder(root->left);
+        	inOrder(root->left);
 		printf("%s ", root->key);
 		inOrder(root->right);
 	}
@@ -274,9 +270,9 @@ void inOrder(struct Node *root)
 /* Driver program to test above function*/
 int main()
 {
-struct Node *root = NULL;
+	struct Node *root = NULL;
 
-/* Constructing tree */
+	/* Constructing tree */
 	root = insert(root, "bbb");
 	root = insert(root, "abc");
 	root = insert(root, "aaa");
@@ -287,25 +283,23 @@ struct Node *root = NULL;
 	root = insert(root, "xxxx");
 	root = insert(root, "jj");
 
-	printf("Preorder traversal of the constructed AVL "
-		"tree is \n");
+	printf("Preorder traversal of the constructed AVL tree is \n");
 	preOrder(root);
-    printf("\n");
+	printf("\n");
 
-    printf("Inorder traversal of the constructed AVL "
-		"tree is \n");
+    	printf("Inorder traversal of the constructed AVL tree is \n");
 	inOrder(root);
-    printf("\n");
+    	printf("\n");
 
 	root = deleteNode(root, "bbb");
 
 	printf("\nPreorder traversal after deletion of bbb \n");
 	preOrder(root);
-    printf("\n");
+    	printf("\n");
 
-    printf("Inorder traversal after deletion of bbb \n");
+    	printf("Inorder traversal after deletion of bbb \n");
 	inOrder(root);
-    printf("\n");
+    	printf("\n");
 
 	return 0;
 }
