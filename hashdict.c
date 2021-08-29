@@ -1,3 +1,5 @@
+// Simple dictonary data structure using hash table whose keys are string in C.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
