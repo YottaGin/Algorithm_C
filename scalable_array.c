@@ -11,7 +11,7 @@ typedef struct {
 void array_list_init(array_list *list) {
     int init_length = 4;
     list->data = (int*)malloc(sizeof(int) * init_length);
-    if (list->data == NULL) exit(0);
+    if (list->data == NULL) exit(1);
     
     list->size = 0;
     list->length = init_length;
@@ -20,7 +20,7 @@ void array_list_init(array_list *list) {
 void array_list_add(array_list *list, int num) {
     if (list->size >= list->length) {
         int *new_data = (int*)realloc(list->data, list->length * 2 * sizeof(int));
-        if (new_data == NULL) exit(0);
+        if (new_data == NULL) exit(1);
         // change pointer
         list->data = new_data;
         list->length *= 2;
