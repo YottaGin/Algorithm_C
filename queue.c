@@ -39,6 +39,12 @@ int dequeue(queue *queue){
 void show(queue *queue){
     int num;
 
+    // when queue is empty
+    if((queue->tail + 1) % MAX_NUM == queue->head) {
+        printf("\n");
+        return;
+    }
+
     if (queue->tail < queue->head) {
         num = queue->tail + MAX_NUM - queue->head + 1;
     } else {
