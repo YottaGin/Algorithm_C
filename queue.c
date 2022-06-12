@@ -36,6 +36,20 @@ int dequeue(queue *queue){
     return ret;
 }
 
+int get_size(queue *queue) {
+    int ret;
+    
+    if((queue->tail + 1) % MAX_NUM == queue->head) {
+        ret = 0;
+    } else if (queue->tail < queue->head) {
+        ret = queue->tail + MAX_NUM - queue->head + 1;
+    } else {
+        ret = queue->tail - queue->head + 1;
+    }
+    
+    return ret;
+}
+
 void show(queue *queue){
     int num;
 
