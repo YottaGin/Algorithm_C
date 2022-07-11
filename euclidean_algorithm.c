@@ -3,22 +3,19 @@
 #include <stdlib.h>
 
 int get_gcd(int x, int y) {
-    // when a = bq + r, gcd(a, b) = gcd(b, r) while (r != 0)
-    int a, b, r;
+    // when a = bq + r => r = a % b, gcd(a, b) = gcd(b, r) = gcb(b, a%b) while (r != 0)
+    int a, b;
     if (x >= y) {
         a = x; b = y;
     } else {
         a = y; b = x;
     }
     
-    r = a % b;
-    while (r != 0) {
-        a = b;
-        b = r;
-        r = a % b;
+    if (b == 0) {
+        return a;
     }
     
-    return b;
+    return get_gcd(b, a % b);
 }
 
 int get_lcb(int x, int y) {
