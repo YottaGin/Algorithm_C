@@ -21,6 +21,10 @@ int get_gcd(int x, int y) {
     return b;
 }
 
+int get_lcb(int x, int y) {
+    return x * y / get_gcd(x, y);
+}
+
 int main(void){
     char buf[1024];
     char str[1024];
