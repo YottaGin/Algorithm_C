@@ -22,6 +22,18 @@ int get_lcb(int x, int y) {
     return x * y / get_gcd(x, y);
 }
 
+// solve Ax + By = gcd(A, B)
+int extgcd(int a, int b, int *x, int *y) {
+    int g = a;
+    if (b != 0) {
+        g = extgcd(b, a%b, y, x);
+        *y -= (a / b) * *x;
+    } else {
+        *x = 1; *y = 0;
+    }
+    return g;
+}
+
 int main(void){
     char buf[1024];
     char str[1024];
