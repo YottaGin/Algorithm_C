@@ -2,20 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-int get_gcd(int x, int y) {
+int get_gcd(int a, int b) {
     // when a = bq + r => r = a % b, gcd(a, b) = gcd(b, r) = gcb(b, a%b) while (r != 0)
-    int a, b;
-    if (x >= y) {
-        a = x; b = y;
-    } else {
-        a = y; b = x;
-    }
-    
-    if (b == 0) {
-        return a;
-    }
-    
-    return get_gcd(b, a % b);
+    // when a >= b then b >= a % b,
+    // when a < b then a % b = a, so call function get_gcd(b,a) recursively.
+    if (b == 0) return a;
+    else return get_gcd(b, a % b);
 }
 
 int get_lcb(int x, int y) {
