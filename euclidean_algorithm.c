@@ -10,7 +10,7 @@ int get_gcd(int a, int b) {
     else return get_gcd(b, a % b);
 }
 
-int get_lcb(int x, int y) {
+int get_lcm(int x, int y) {
     return x * y / get_gcd(x, y);
 }
 
