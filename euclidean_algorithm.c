@@ -26,6 +26,18 @@ int extgcd(int a, int b, int *x, int *y) {
     return g;
 }
 
+// powMod
+long long int powMod(long long int x, long long int n, long long int MOD) {
+    // x^n % Mod
+    long long int ret = 1;
+    while (n > 0) {
+        if (n & 1) ret = ret * x % MOD;  
+        x = x * x % MOD;
+        n >>= 1; 
+    }
+    return ret;
+}
+
 int main(void){
     char buf[1024];
     char str[1024];
